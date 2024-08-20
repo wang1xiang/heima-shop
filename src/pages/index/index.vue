@@ -6,6 +6,7 @@ import { ref } from 'vue'
 import CustomNavbar from './components/CustomNavbar.vue'
 import CategoryPanel from './components/CategoryPanel.vue'
 import HotPanel from './components/HotPanel.vue'
+import PageSkeleton from './components/PageSkeleton.vue'
 import { useGuessList } from '../../composables/index'
 
 // 获取轮播图数据
@@ -73,14 +74,17 @@ const onRefresherrefresh = async () => {
       class="scroll-view"
       scroll-y
     >
-      <!-- 滚动容器 -->
-      <XtxSwiper :list="bannerList" />
-      <!-- 分类 -->
-      <CategoryPanel :list="categoryList" />
-      <!-- 热门 -->
-      <HotPanel :list="hotList" />
-      <!-- 猜你喜欢 -->
-      <XtxGuess ref="guessRef" />
+      <PageSkeleton v-if="isLoading" />
+      <template v-else>
+        <!-- 滚动容器 -->
+        <XtxSwiper :list="bannerList" />
+        <!-- 分类 -->
+        <CategoryPanel :list="categoryList" />
+        <!-- 热门 -->
+        <HotPanel :list="hotList" />
+        <!-- 猜你喜欢 -->
+        <XtxGuess ref="guessRef" />
+      </template>
     </scroll-view>
   </view>
 </template>

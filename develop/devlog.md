@@ -330,3 +330,13 @@ export type XtxSwiperInstance = InstanceType<typeof XtxSwiper>
 ```
 
 这样其他组件引入就不会报错
+
+### 开发
+
+### 骨架屏
+
+微信开发者工具 -> 信息 -> 生成骨架屏
+
+![skeleton](./skeleton.png)
+
+复制代码到 vue 中稍作修改即可
