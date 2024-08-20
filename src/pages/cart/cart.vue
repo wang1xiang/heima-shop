@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <view class="cart">cart</view>
+  <view class="cart">
+    <uni-icons type="color" color="" size="24" />
+  </view>
 </template>
 
 <style lang="scss">

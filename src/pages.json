@@ -1,4 +1,15 @@
 {
+  // uni-app 3.0.0+ 版本支持，自动注册组件
+  // 详细配置参考：https://uniapp.dcloud.net.cn/uniCloud/uni-config-center?id=easycom
+  "easycom": {
+    // 是否开启自动扫描
+    "autoscan": true,
+    // 以正则方式完成组件的自动导入
+    "custom": {
+      // uni-ui 规则如下配置 uni-badge会自动替换为@dcloudio/uni-ui/lib/uni-badge/uni-badge.vue
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
