@@ -297,3 +297,36 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
   <view class="navbar" :style="{ paddingTop: safeAreaInsets!.top + 10 + 'px' }">
 </template>
 ```
+
+### 自定义组件自动引入
+
+同上 easycom 自动导入
+
+```json
+// 以 Xtx 开头的组件，在 components 文件夹中查找引入（需要重启服务器）
+"^Xtx(.*)": "@/components/Xtx$1.vue"
+```
+
+修改后需要重启项目生效
+
+#### 添加组件类型声明
+
+types 下新建 components.d.ts
+
+```ts
+import XtxSwiper from '@/components/XtxSwiper.vue'
+import XtxGuess from '@/components/XtxGuess.vue'
+
+declare module 'vue' {
+  export interface GlobalComponents {
+    XtxSwiper: typeof XtxSwiper
+    XtxGuess: typeof XtxGuess
+  }
+}
+
+// 组件实例类型
+export type XtxGuessInstance = InstanceType<typeof XtxGuess>
+export type XtxSwiperInstance = InstanceType<typeof XtxSwiper>
+```
+
+这样其他组件引入就不会报错

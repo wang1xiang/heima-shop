@@ -6,3 +6,10 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    view: typeof import('uni-app').view
+    text: typeof import('uni-app').text
+    // 继续添加其他你可能用到的组件...
+  }
+}
