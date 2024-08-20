@@ -173,7 +173,7 @@ pnpm i @types/wechat-miniprogram @uni-helper/uni-app-types -D
 
 [uni-ui-types](https://www.npmjs.com/package/@uni-helper/uni-ui-types)
 
-#### pinia 持久化
+### pinia 持久化
 
 [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/)
 
@@ -195,7 +195,7 @@ pnpm i @types/wechat-miniprogram @uni-helper/uni-app-types -D
 
 [storage](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/config.html#storage)
 
-#### 请求工具
+### 请求工具
 
 [uni.request](https://uniapp.dcloud.net.cn/api/request/request.html#request)
 
@@ -237,7 +237,7 @@ uni.addInterceptor('request', httpInterceptor)
 uni.addInterceptor('uploadFile', httpInterceptor)
 ```
 
-##### 封装成 promise
+#### 封装成 promise
 
 ```js
 type Data<T> = {
@@ -279,4 +279,21 @@ export const http = <T>(options: UniApp.RequestOptions) => {
     })
   })
 }
+```
+
+## 首页
+
+### 安全区域设置
+
+```js
+// 获取屏幕边界到安全区域距离
+const { safeAreaInsets } = uni.getSystemInfoSync()
+```
+
+设置顶部安全距离
+
+```vue
+<template>
+  <view class="navbar" :style="{ paddingTop: safeAreaInsets!.top + 10 + 'px' }">
+</template>
 ```
