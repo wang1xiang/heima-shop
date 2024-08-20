@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { getHomeBannerAPI } from '@/services/home'
+import { getHomeBannerAPI, getHomeCategoryAPI, getHomeHotAPI } from '@/services/home'
 import type { BannerItem, CategoryItem, HotItem } from '@/types/home'
 import { onLoad } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 import CustomNavbar from './components/CustomNavbar.vue'
+import CategoryPanel from './components/CategoryPanel.vue'
+import HotPanel from './components/HotPanel.vue'
 
 // 获取轮播图数据
 const bannerList = ref<BannerItem[]>([])
@@ -12,13 +14,27 @@ const getHomeBannerData = async () => {
   bannerList.value = res.result
 }
 
+// 获取轮播图数据
+const categoryList = ref<CategoryItem[]>([])
+const getHomeCategoryData = async () => {
+  const res = await getHomeCategoryAPI()
+  categoryList.value = res.result
+}
+
+// 获取轮播图数据
+const hotList = ref<HotItem[]>([])
+const getHomeHotPanelData = async () => {
+  const res = await getHomeHotAPI()
+  hotList.value = res.result
+}
+
 // 是否加载中标记
 const isLoading = ref(false)
 
 // 页面加载
 onLoad(async () => {
   isLoading.value = true
-  await Promise.all([getHomeBannerData()])
+  await Promise.all([getHomeBannerData(), getHomeHotPanelData(), getHomeCategoryData()])
   isLoading.value = false
 })
 </script>
@@ -27,8 +43,16 @@ onLoad(async () => {
   <view class="viewport">
     <!-- 自定义导航栏 -->
     <CustomNavbar />
-    <!-- 滚动容器 -->
-    <XtxSwiper :list="bannerList" />
+    <scroll-view class="scroll-view" scroll-y>
+      <!-- 滚动容器 -->
+      <XtxSwiper :list="bannerList" />
+      <!-- 分类 -->
+      <CategoryPanel :list="categoryList" />
+      <!-- 热门 -->
+      <HotPanel :list="hotList" />
+      <!-- 猜你喜欢 -->
+      <XtxGuess />
+    </scroll-view>
   </view>
 </template>
 

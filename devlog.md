@@ -311,7 +311,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
 
 #### 添加组件类型声明
 
-types 下新建 components.d.ts
+自动导入的组件缺少类型声明，需要 types 下新建 components.d.ts
 
 ```ts
 import XtxSwiper from '@/components/XtxSwiper.vue'

@@ -35,7 +35,7 @@ uni.addInterceptor('uploadFile', httpInterceptor)
 type Data<T> = {
   code: string
   msg: string
-  data: T
+  result: T
 }
 enum StatusCodeEnum {
   SUCCESS = 200,
