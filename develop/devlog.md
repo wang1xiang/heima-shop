@@ -340,3 +340,27 @@ export type XtxSwiperInstance = InstanceType<typeof XtxSwiper>
 ![skeleton](./skeleton.png)
 
 复制代码到 vue 中稍作修改即可
+
+### 页面参数
+
+```js
+// uniapp 获取页面参数
+const query = defineProps<{
+  type: string
+}>()
+```
+
+获取页面参数，例如 路由传参
+
+### 动态设置标题
+
+```js
+// 动态设置标题
+uni.setNavigationBarTitle({ title: xxx })
+```
+
+### 添加编译模式
+
+![compile-mode](./compile-mode.png)
+
+可以每次打开固定路由
