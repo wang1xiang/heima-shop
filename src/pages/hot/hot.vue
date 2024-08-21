@@ -47,7 +47,7 @@ const getHotRecommendData = async () => {
 onLoad(() => {
   getHotRecommendData()
 })
-d q q q q q q q q q q q q q q q
+
 // 滚动触底
 const onScrolltolower = async () => {
   // 获取当前选项
