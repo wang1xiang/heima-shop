@@ -71,17 +71,6 @@ pnpm i @types/wechat-miniprogram @uni-helper/uni-app-types -D
 }
 ```
 
----
-
-date: 2024-8-1
-title: uniapp 学习笔记
-tags:
-
-- wechat
-  describe: uniapp 学习笔记
-
----
-
 ## 创建项目
 
 ### Hbuildx 创建
