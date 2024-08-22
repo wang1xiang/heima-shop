@@ -333,6 +333,19 @@ export type XtxSwiperInstance = InstanceType<typeof XtxSwiper>
 
 ### 开发
 
+### 自定义 tabBar
+
+```json
+{
+  "path": "pages/index/index",
+  "style": {
+    "navigationBarTitleText": "首页",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  }
+},
+```
+
 ### 骨架屏
 
 微信开发者工具 -> 信息 -> 生成骨架屏
@@ -364,3 +377,33 @@ uni.setNavigationBarTitle({ title: xxx })
 ![compile-mode](./compile-mode.png)
 
 可以每次打开固定路由
+
+## 小程序快捷登录
+
+```js
+wx.login()
+```
+
+获取微信登录信息
+
+```js
+<button class="button phone" open-type="getPhoneNumber" @getphonenumber="onGetphonenumber">
+  <text class="icon icon-phone"></text>
+  手机号快捷登录
+</button>
+
+// 获取用户手机号码
+const onGetphonenumber: UniHelper.ButtonOnGetphonenumber = async (ev) => {
+  const { encryptedData, iv } = ev.detail
+  const res = await postLoginWxMinAPI({ code, encryptedData, iv })
+  loginSuccess(res.result)
+}
+```
+
+获取登录用户手机号（个人微信小程序账号无法获取）
+
+## 页面分包和预加载
+
+通过分包将不经常使用的页面进行拆分，以提高小程序的启动速度。
+
+点击才开始加载，此时就需要对分包进行预加载
